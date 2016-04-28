@@ -16,6 +16,7 @@
 
 package com.weibo.motan.benchmark;
 
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Properties;
 import java.util.concurrent.CountDownLatch;
@@ -23,6 +24,7 @@ import java.util.concurrent.CyclicBarrier;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.io.ClassPathResource;
 
 public class MotanBenchmarkClient extends AbstractBenchmarkClient {
     static Properties properties = new Properties();
@@ -32,7 +34,8 @@ public class MotanBenchmarkClient extends AbstractBenchmarkClient {
     private static BenchmarkService benchmarkService;
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        properties.load(new ClassPathResource("benchmark.properties").getInputStream());
         int concurrents = Integer.parseInt(properties.getProperty("concurrents"));
         int runtime = Integer.parseInt(properties.getProperty("runtime"));
         String classname = properties.getProperty("classname");

@@ -33,6 +33,7 @@ public class MotanApiClientDemo {
         motanDemoServiceReferer.setGroup("motan-demo-rpc");
         motanDemoServiceReferer.setVersion("1.0");
         motanDemoServiceReferer.setRequestTimeout(300);
+        motanDemoServiceReferer.setDirectUrl("127.0.0.1:8002");
 
         // 配置注册中心
         RegistryConfig registry = new RegistryConfig();
